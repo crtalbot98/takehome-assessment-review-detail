@@ -12,7 +12,8 @@
     "jsx": "react",
     "esModuleInterop": true,
     "module": "commonjs",
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true
   },
   "include": ["**/*",],
   "exclude": ["**/*.spec.ts"]
