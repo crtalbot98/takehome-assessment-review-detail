@@ -41,12 +41,14 @@ module.exports = {
       template: "./src/index.html",
       filename: "index.html",
       inject: "body",
-    }),
+    })
   ],
   devServer: {
     hot: true,
     port: 8080,
     open: true,
+    historyApiFallback: true,
+    contentBase: './',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -57,6 +59,9 @@ module.exports = {
     fallback: {
       'path': false,
       'fs': false
+    },
+    alias: {
+      react: path.resolve('./node_modules/react')
     }
   },
   optimization: {
