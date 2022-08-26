@@ -2,9 +2,9 @@
 ## Created with React, TypeScript, TailwindCSS, React Router, and Webpack.
 
 To run this application:
-- npm install
-- npm run build
-- npm run dev
+1. npm install
+2. npm run build
+3. npm run dev
 
 Review List view
 ![Review List](https://user-images.githubusercontent.com/50780917/187001390-519bf3c2-1975-49b2-b5d2-4c53c11ec09b.png)
