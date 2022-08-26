@@ -1,16 +1,20 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { useLocation, useParams, Link } from 'react-router-dom';
 import { reviewContext } from './App';
 import { Review } from './Review';
 import Input from './Input';
-import { IResponse, Response } from './Response';
+import { Response } from './Response';
+
+interface ILocationState {
+  reviewId: string
+}
 
 const ReviewPage: React.FC = () => {
   const { reviews, setReviews } = useContext(reviewContext);
   const { id } = useParams();
   const { state } = useLocation();
   const review = useMemo(() => {
-    const selectedIndex = reviews.findIndex((review) =>  id === review.id || state.reviewId === review.id);
+    const selectedIndex = reviews.findIndex((review) =>  id === review.id || (state as ILocationState).reviewId === review.id);
     return selectedIndex !== -1 ? reviews[selectedIndex] : null
   }, [reviews]);
 
@@ -34,7 +38,7 @@ const ReviewPage: React.FC = () => {
     }
 
     review.responses.push(response);
-    const selectedIndex = reviews.findIndex((review) => id === review.id || state.reviewId === review.id);
+    const selectedIndex = reviews.findIndex((review) => id === review.id || (state as ILocationState).reviewId === review.id);
     if(selectedIndex !== -1) updateResponses(selectedIndex)
   }
 
@@ -49,7 +53,7 @@ const ReviewPage: React.FC = () => {
     const editedResponse = review.responses[selectedIndex];
     editedResponse.content = value;
 
-    const reviewIndex = reviews.findIndex((review) => id === review.id || state.reviewId === review.id);
+    const reviewIndex = reviews.findIndex((review) => id === review.id || (state as ILocationState).reviewId === review.id);
     if(reviewIndex !== -1) updateResponses(reviewIndex)
   }
 
