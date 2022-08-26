@@ -48,7 +48,6 @@ module.exports = {
     port: 8080,
     open: true,
     historyApiFallback: true,
-    contentBase: './',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
